@@ -1,0 +1,129 @@
+// Header styling
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+
+    .logout-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}
+
+// Actions styling
+.actions {
+    text-align: center;
+    margin-top: 20px;
+
+    .orders-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #218838;
+        }
+    }
+}
+
+// Welcome message and user details styling
+.welcome-message {
+    text-align: center;
+    margin-top: 20px;
+
+    h1 {
+        font-size: 24px;
+        color: #333;
+    }
+}
+
+.user-details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}
+// Orders list styling
+.orders-list {
+    margin-top: 20px;
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}
+
+// No records found styling
+.no-records {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}

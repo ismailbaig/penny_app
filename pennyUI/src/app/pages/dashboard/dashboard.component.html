@@ -1,0 +1,55 @@
+<div class="header">
+    <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+
+<div class="welcome-message">
+    <h1>Welcome, {{ username }}</h1>
+</div>
+
+<div class="user-details">
+    <table>
+        <thead>
+            <tr>
+                <th>USER NAME</th>
+                <th>USER ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ username }}</td>
+                <td>{{ user_id }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="actions">
+    <button class="orders-button" (click)="fetchOrders()">View Orders</button>
+</div>
+
+<div class="orders-list" *ngIf="!(noRecordsFound$ | async)">
+    <ng-container *ngIf="(orders$ | async) as orders">
+        <table *ngIf="orders.length > 0">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{ order.product_id }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.description }}</td>
+                    <td>\${{ order.price }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
+
+
+<div class="no-records" *ngIf="noRecordsFound$ | async">
+    <p>No records found</p>
+</div>

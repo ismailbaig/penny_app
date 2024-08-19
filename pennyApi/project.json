@@ -1,0 +1,33 @@
+{
+  "name": "pennyApi",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pennyApi/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "pennyApi:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pennyApi:build:development"
+        },
+        "production": {
+          "buildTarget": "pennyApi:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "pennyApi/jest.config.ts"
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<div class="signup-container">
+    <div class="signup-form">
+        <h2>Sign Up</h2>
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" [(ngModel)]="SignUpObj.name" required minlength="2"
+                    class="form-control" />
+                <div *ngIf="(signUpForm.controls['name']?.touched || signUpForm.controls['name']?.dirty) && signUpForm.controls['name']?.errors"
+                    class="error">
+                    <small *ngIf="signUpForm.controls['name']?.errors?.['required']">Name is
+                        required.</small>
+                    <small *ngIf="signUpForm.controls['name']?.errors?.['minlength']">Name must be at least 2
+                        characters.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" [(ngModel)]="SignUpObj.email" required email
+                    class="form-control" />
+                <div *ngIf="(signUpForm.controls['email']?.touched || signUpForm.controls['email']?.dirty) && signUpForm.controls['email']?.errors"
+                    class="error">
+                    <small *ngIf="signUpForm.controls['email']?.errors?.['required']">Email is required.</small>
+                    <small *ngIf="signUpForm.controls['email']?.errors?.['email']">Invalid email format.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" [(ngModel)]="SignUpObj.phoneno" required minlength="10"
+                    maxlength="15" class="form-control" />
+                <div *ngIf="(signUpForm.controls['phone']?.touched || signUpForm.controls['phone']?.dirty) && signUpForm.controls['phone']?.errors"
+                    class="error">
+                    <small *ngIf="signUpForm.controls['phone']?.errors?.['required']">Phone Number is required.</small>
+                    <small *ngIf="signUpForm.controls['phone']?.errors?.['minlength']">Phone Number must be at least 10
+                        digits.</small>
+                    <small *ngIf="signUpForm.controls['phone']?.errors?.['maxlength']">Phone Number cannot exceed 15
+                        digits.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="SignUpObj.password" required
+                    minlength="6" class="form-control" />
+                <div *ngIf="(signUpForm.controls['password']?.touched || signUpForm.controls['password']?.dirty) && signUpForm.controls['password']?.errors"
+                    class="error">
+                    <small *ngIf="signUpForm.controls['password']?.errors?.['required']">Password is required.</small>
+                    <small *ngIf="signUpForm.controls['password']?.errors?.['minlength']">Password must be at least 6
+                        characters.</small>
+                </div>
+            </div>
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
+            <button type="submit" class="btn-submit" [disabled]="!signUpForm.valid">Sign Up</button>
+            <p class="switch-page">
+                Already have an account? <a routerLink="/login">Sign In</a>
+            </p>
+        </form>
+    </div>
+</div>
