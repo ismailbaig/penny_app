@@ -8,4 +8,8 @@ export class signupDTO {
   @IsString()
   @IsNotEmpty()
   email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  user_id: string;
 }

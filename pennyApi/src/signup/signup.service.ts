@@ -20,6 +20,9 @@ export class UsersService {
       }
     } else {
       // Create new user if no duplicates found
+      
+      let userCount = await this.userModel.countDocuments();
+      model.user_id = "user_00" + ++userCount;
       const createdUser = new this.userModel(model);
       await createdUser.save();
       return  {message : "User was added Successfully"};
