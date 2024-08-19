@@ -24,9 +24,10 @@ import { DashboardService } from './dashboard/dashboard.service';
     PassportModule,
     JwtModule.register({
       secret: 'my-key', // Replace with your secret key
-      signOptions: { expiresIn: '1m' }, // Token expiration time
+      signOptions: { expiresIn: '8h' }, // Token expiration time
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/pennydb'),
+    // MongooseModule.forRoot('mongodb://localhost:27017/pennydb'),
+    MongooseModule.forRoot('mongodb+srv://ismailece2007:JCW8AZY13QjdBhIR@pennytaskcluster1.vi2ta.mongodb.net/pennydb'),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]), // Register User schema
     MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }]), // Register Order schema
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]), // Register Product schema
