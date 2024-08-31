@@ -3,13 +3,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { DashBoardService } from '../../../pages/dashboard/dashboard.service';
 import {
   loadCount,
   loadCountFailure,
   loadCountSuccess,
 } from '../actions/counter.actions';
-
+import { DashBoardService } from 'pennyUI/src/app/features/dashboard/services/dashboard.service';
 @Injectable()
 export class CounterEffects {
 //   loadCount$ = createEffect(() =>

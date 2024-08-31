@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, UnauthorizedException } from '@nestjs/common';
-import { LoginDTO } from './login.dto';
+import { LoginDTO } from './dto/login.dto';
 import { LoginService } from './login.service';
 
 @Controller('api/login')

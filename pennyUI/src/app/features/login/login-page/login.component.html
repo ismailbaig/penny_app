@@ -24,11 +24,13 @@
             characters.</small>
         </div>
       </div>
-
+      <p class="forgot-password-page">
+        <a routerLink="/forgot-password">Forgot password?</a>
+      </p>
       <button type="submit" class="btn-submit" [disabled]="!loginForm.valid">Login</button>
       <div class="error-message" *ngIf="errorMessage">
         <p>{{ errorMessage }}</p>
-    </div>
+      </div>
       <p class="switch-page">
         Don't have an account? <a routerLink="/signup">Sign Up</a>
       </p>

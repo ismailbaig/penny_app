@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { DashBoardService } from './dashboard.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../sharedService/auth.service';
+import { AuthService } from '../../../core/authentication/auth.service';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import * as OrderActions from '../../store/order/actions/order.actions';
+import * as OrderActions from '../../../store/order/actions/order.actions';
 import {
   selectOrders,
   selectNoRecordsFound,
   selectOrderError,
-} from '../../store/order/selectors/order.selectors';
+} from '../../../store/order/selectors/order.selectors';
 import { FormsModule } from '@angular/forms';
+import { DashBoardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,6 +38,9 @@ export class DashboardComponent implements OnInit {
     this.error$ = this.store.select(selectOrderError);
   }
   ngOnInit(): void {
+    if (!this.authService.getToken()) {
+      this.router.navigate(['/login']);
+    }
     this.dashboardService.getDashboardData().subscribe(
       (res) => {
         this.username = this.authService.getUsername();
@@ -50,7 +53,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-    this.authService.clearData();
+    this.authService.logout();
     this.store.dispatch(OrderActions.clearOrders());
     this.router.navigate(['login']);
   }

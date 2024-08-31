@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { SignupService } from './signup.service';
+import { SignupService } from '../services/signup.service';
+import { SignupDTO } from '../models/signup.dto';
+import { SignupResponse } from '../models/signup-response.model';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +20,7 @@ export class SignupComponent {
     private signupService: SignupService,
     private router: Router,
   ) {}
-  SignUpObj: any = {
+  SignUpObj: SignupDTO = {
     name: '',
     email: '',
     phoneno: '',
@@ -29,8 +31,10 @@ export class SignupComponent {
 
   onSubmit(signUpForm: any) {
     this.signupService.addUser(this.SignUpObj).subscribe(
-      (res)=>{
+      (res:SignupResponse)=>{
+        if(res.success){
         this.router.navigate(['login']);
+        }
       },
       (err)=>{
         this.errorMessage = "Duplicate User: Email or Username already exist"

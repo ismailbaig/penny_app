@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { UsersService as SignupService } from './signup.service';
-import { signupDTO } from './signup.dto';
+import { signupDTO } from './dto/signup.dto';
 
 @Controller('api/signup')
 export class SignupController {

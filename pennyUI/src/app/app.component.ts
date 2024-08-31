@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
   // count$: Observable<number>;
   // count: number = 0;
   title = 'pennyUI';
-  constructor(private store: Store<{ count: number }>) {
+  constructor(
+    // private store: Store<{ count: number }>
+  ) {
     // this.count$ = this.store.select(selectCounterValue) || of(0);
     // this.count$ = of(0);
   }

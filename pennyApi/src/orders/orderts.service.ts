@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Order, orderDocument } from './orderSchema';
+import { Order, orderDocument } from './schemas/orderSchema';
 import { UsersService } from '../signup/signup.service';
 import { ProductsService } from '../products/products.service';
 

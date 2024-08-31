@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from './login.service';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../sharedService/auth.service';
+import { AuthService } from 'pennyUI/src/app/core/authentication/auth.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { AuthService } from '../sharedService/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   errorMessage: string = '';
   constructor(
     private loginService: LoginService,
@@ -27,6 +27,10 @@ export class LoginComponent {
 
   http = inject(HttpClient);
 
+  ngOnInit(){
+    this.errorMessage=this.authService.getErrorMessage();
+  }
+
   onSubmit() {
     this.loginService.getLoginToken(this.LoginObj).subscribe(
       // success
@@ -35,7 +39,8 @@ export class LoginComponent {
           this.authService.setToken(
             res.access_token,
             res.username,
-            res.user_id
+            res.user_id,
+            res.expires_in
           );
           this.authService.setEmail(res.email);
           this.router.navigate(['dashboard']);

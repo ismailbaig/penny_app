@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { signupDTO } from './signup.dto';
+import { signupDTO } from './dto/signup.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from './userSchema';
+import { User, UserDocument } from './schemas/userSchema';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -19,13 +20,21 @@ export class UsersService {
         return (errorMessage = 'Duplicate user: Name already exists.');
       }
     } else {
+      const hashedPassword = await bcrypt.hash(model.password, 10);
+      model.password = hashedPassword;
+
       // Create new user if no duplicates found
-      
+
       let userCount = await this.userModel.countDocuments();
-      model.user_id = "user_00" + ++userCount;
+      model.user_id = 'user_00' + ++userCount;
       const createdUser = new this.userModel(model);
       await createdUser.save();
-      return  {message : "User was added Successfully"};
+
+      return {
+        success: true,
+        message: 'User was added Successfully',
+        name: model.name,
+      };
     }
   }
 

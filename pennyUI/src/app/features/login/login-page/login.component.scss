@@ -56,10 +56,11 @@
       &:hover {
         background-color: #0056b3;
       }
+
       &:disabled {
-        background-color: #cccccc;  // Gray color for disabled state
-        color: #666666;             // Dim text color for better readability
-        cursor: not-allowed;        // Cursor to indicate the button is disabled
+        background-color: #cccccc; // Gray color for disabled state
+        color: #666666; // Dim text color for better readability
+        cursor: not-allowed; // Cursor to indicate the button is disabled
       }
     }
 
@@ -86,7 +87,21 @@
     border: 1px solid #f5c6cb;
     border-radius: 4px;
     text-align: center;
-}
+  }
+
+  .forgot-password-page {
+    text-align: left;
+    margin-top: 1rem;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 
 
   // Responsive adjustments

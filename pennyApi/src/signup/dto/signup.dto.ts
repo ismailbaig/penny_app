@@ -11,5 +11,9 @@ export class signupDTO {
 
   @IsString()
   @IsNotEmpty()
+  password: string;
+
+  @IsString()
+  @IsNotEmpty()
   user_id: string;
 }

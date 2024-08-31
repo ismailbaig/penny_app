@@ -1,14 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from "pennyUI/src/environments/environment.dev";
 import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment.dev";
-import { SignupDTO } from "./signup.dto";
-
+import { LoginDTO } from "../models/login. dto";
 
 @Injectable({
     providedIn: 'root'
   })
-export class SignupService {
+export class LoginService {
 
 
   private _baseUrl: string = environment.baseUrl;
@@ -16,8 +15,8 @@ export class SignupService {
   constructor(private http: HttpClient){
   }
 
-  public addUser(signupDto: SignupDTO): Observable<any> {
-    var data = this.http.post(this._baseUrl + 'api/signup/adduser',  signupDto);
+  public getLoginToken(logindto: LoginDTO): Observable<LoginDTO> {
+    var data = this.http.post<LoginDTO>(this._baseUrl + 'api/login/tkn',  logindto);
     return data;
   }
 }
