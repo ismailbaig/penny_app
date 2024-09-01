@@ -65,13 +65,18 @@ export class DashboardComponent implements OnInit {
         (res) => {
           if (res.length === 0) {
             this.store.dispatch(OrderActions.loadOrders({ orders: [] }));
+            this.noRecordsFound = true;
+            this.orders = [];
           } else {
             this.store.dispatch(OrderActions.loadOrders({ orders: res }));
+            this.orders = res;
+            this.noRecordsFound = false;
           }
         },
         (error) => {
           console.error('Error fetching orders:', error);
           this.store.dispatch(OrderActions.loadOrdersFailure({ error }));
+          this.noRecordsFound = true;
         }
       );
     }
